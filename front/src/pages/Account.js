@@ -4,12 +4,14 @@ import Api from '../Api';
 import { useState, useEffect } from 'react';
 import User from '../components/User';
 import Nav from '../components/Nav';
+import { useNavigate } from 'react-router-dom';
 
 const api = new Api();
 
 export default function Account() {
   const [user, setUser] = useState([]);
   const id = JSON.parse(localStorage.getItem('userId'));
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -25,6 +27,7 @@ export default function Account() {
   const onDeleteUser = ({ id }) => {
     if (window.confirm('Êtes-vous sûr de vouloir supprimer votre compte?')) {
       api.deleteUser(id);
+      navigate(`/logout`);
     }
   };
   return (

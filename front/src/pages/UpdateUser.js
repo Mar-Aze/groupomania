@@ -11,7 +11,6 @@ const api = new Api();
 
 export default function UpdateUser() {
   const [user, setUser] = useState(null);
-  //const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
