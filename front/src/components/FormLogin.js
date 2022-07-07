@@ -1,5 +1,6 @@
 import '../styles/FormLogin.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function FormLogin({ onLogin }) {
   const [email, setEmail] = useState('');
@@ -50,6 +51,12 @@ export default function FormLogin({ onLogin }) {
       <button type="submit" className="form-login-btn">
         Se connecter
       </button>
+      <p className="form-login-p">
+        Vous n'avez pas de compte?{' '}
+        <Link className="form-login-a" to={`/signin`}>
+          S'inscrire
+        </Link>
+      </p>
     </form>
   );
 }

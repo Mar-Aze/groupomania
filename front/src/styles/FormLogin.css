@@ -59,6 +59,17 @@ input.error, textarea.error {
     border: 1px solid #FD2D01;
 }
 
+.form-login-p{
+color: #091F43;
+font-size: 12px;
+margin:auto;
+}
+
+.form-login-a{
+    color: #FD2D01;
+    font-size: 12px;
+}
+
 @media screen and (min-width: 768px) and (max-width: 992px) {
     input {
         font-size:16px;
@@ -70,6 +81,9 @@ input.error, textarea.error {
     h2 {
         font-size:32px;
     }
+    .form-login-p ,.form-login-a {
+        font-size: 16px;
+        }
 }
 
 @media screen and  (min-width: 992px) {
@@ -77,10 +91,13 @@ input.error, textarea.error {
         font-size:20px;
     }
     .form-login-btn {
-        font-size:30px;
-        padding: 30px;
+        font-size:20px;
+        padding: 20px;
     }
     h2 {
-        font-size:50px;
+        font-size:40px;
     }
+    .form-login-p ,.form-login-a {
+        font-size: 18px;
+        }
 }    

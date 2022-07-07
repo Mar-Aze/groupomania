@@ -1,5 +1,6 @@
 import '../styles/FormLogin.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Signin({ onSignin }) {
   const [firstName, setFirstName] = useState('');
@@ -80,6 +81,12 @@ export default function Signin({ onSignin }) {
       <button type="submit" className="form-login-btn">
         Créer un compte
       </button>
+      <p className="form-login-p">
+        Vous avez déjà un compte?{' '}
+        <Link className="form-login-a" to={`/login`}>
+          Se connecter
+        </Link>
+      </p>
     </form>
   );
 }
