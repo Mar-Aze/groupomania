@@ -1,3 +1,14 @@
+# Configuration du Frontend
+
+---
+
+1. Écrire dans le terminal cd front.
+2. Taper npm install pour installer toutes les dépendances du frontend.
+3. Lancer le serveur en entrant dans le terminal: **npm start**.
+4. Ouvrir [http://localhost:3000](http://localhost:3000) pour le voir dans le navigateur
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
