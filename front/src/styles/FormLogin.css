@@ -53,31 +53,10 @@ span {
     padding:3px;
     color: #FD2D01;
     font-size: 12px;
-    display: none;
 }
 
-input:invalid[invalid="true"] {
+input.error, textarea.error {
     border: 1px solid #FD2D01;
-}
-
-input:invalid[invalid="true"]~span{
-    display: block;
-}
-
-textarea:invalid[invalid="true"] {
-    border: 1px solid #FD2D01;
-}
-
-textarea:invalid[invalid="true"]~span{
-    display: block;
-}
-
-input:invalid[invalid="false"] {
-    border:#FFD7D7 solid 1px;
-}
-
-input:invalid[invalid="false"]~span{
-    display: none;
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {

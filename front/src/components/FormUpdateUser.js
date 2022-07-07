@@ -16,10 +16,10 @@ export default function UpdateUser({ user }) {
   const [invalidE, setInvalidE] = useState(false);
 
   const handleFocusF = (e) => {
-    setInvalidF(true);
+    setInvalidF(!e.target.validity.valid);
   };
   const handleFocusE = (e) => {
-    setInvalidE(true);
+    setInvalidE(!e.target.validity.valid);
   };
 
   function handleSubmit(e) {
@@ -48,27 +48,27 @@ export default function UpdateUser({ user }) {
       <input
         type="text"
         placeholder="Votre prénom"
+        className={invalidF ? 'error' : ''}
         value={firstName}
         name="firstName"
         onChange={(e) => setFirstName(e.target.value)}
         onBlur={handleFocusF}
-        invalid={invalidF.toString()}
         pattern="([a-zA-ZàâäéèëêîïôöùûüçæœÂÀÄÉÈÊËÎÏÔÖÛÜÙÇÆŒ]{2,})+([-'\s][a-zA-ZàâäéèëêîïôöùûüçæœÂÀÄÉÈÊËÎÏÔÖÛÜÙÇÆŒ]+)?$"
         required
       />
-      <span>Veuillez entrer votre prénom!</span>
+      {invalidF ? <span>Veuillez entrer votre prénom!</span> : null}
       <input
         type="email"
         placeholder="Votre email"
+        className={invalidE ? 'error' : ''}
         value={email}
         name="email"
         onChange={(e) => setEmail(e.target.value)}
         onBlur={handleFocusE}
-        invalid={invalidE.toString()}
         pattern="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,5})$"
         required
       />
-      <span>Veuillez entrer un email valide!</span>
+      {invalidE ? <span>Veuillez entrer un email valide!</span> : null}
       <input
         type="file"
         placeholder="Photo"

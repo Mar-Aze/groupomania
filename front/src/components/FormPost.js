@@ -9,7 +9,7 @@ export default function FormPost({ onCreatePost }) {
   const [invalid, setInvalid] = useState(false);
 
   const handleFocus = (e) => {
-    setInvalid(true);
+    setInvalid(!e.target.validity.valid);
   };
 
   function handleSubmit(e) {
@@ -49,13 +49,13 @@ export default function FormPost({ onCreatePost }) {
       <textarea
         type="text"
         placeholder="Description"
+        className={invalid ? 'error' : ''}
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         required
         onBlur={handleFocus}
-        invalid={invalid.toString()}
       />
-      <span>Merci de ne pas laisser ce champs vide!</span>
+      {invalid ? <span>Merci de ne pas laisser ce champs vide!</span> : null}
       <button type="submit" className="form-login-btn">
         Publier
       </button>

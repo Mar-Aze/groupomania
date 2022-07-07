@@ -8,10 +8,10 @@ export default function FormLogin({ onLogin }) {
   const [invalidP, setInvalidP] = useState(false);
 
   const handleFocusE = (e) => {
-    setInvalidE(true);
+    setInvalidE(!e.target.validity.valid);
   };
   const handleFocusP = (e) => {
-    setInvalidP(true);
+    setInvalidP(!e.target.validity.valid);
   };
 
   function handleSubmit(e) {
@@ -27,27 +27,26 @@ export default function FormLogin({ onLogin }) {
       <h2>Welcome back!</h2>
       <input
         type="email"
+        className={invalidE ? 'error' : ''}
         placeholder="Email"
-        className="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         onBlur={handleFocusE}
-        invalid={invalidE.toString()}
         pattern="([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,5})$"
         required
       />
-      <span>Votre email n'est pas correct!</span>
+      {invalidE ? <span>Votre email n'est pas correct!</span> : null}
       <input
         type="password"
         placeholder="Mot de passe"
+        className={invalidP ? 'error' : ''}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         onBlur={handleFocusP}
-        invalid={invalidP.toString()}
         pattern="^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$"
         required
       />
-      <span>Votre mot de passe n'est pas correct!</span>
+      {invalidP ? <span>Votre mot de passe n'est pas correct!</span> : null}
       <button type="submit" className="form-login-btn">
         Se connecter
       </button>
