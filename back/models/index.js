@@ -43,7 +43,7 @@ Object.keys(db).forEach((modelName) => {
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-//Tables
+//Tables (models)
 db.post = require('./post.js')(sequelize, Sequelize);
 db.user = require('./user.js')(sequelize, Sequelize);
 db.like = require('./like.js')(sequelize, Sequelize);

@@ -40,11 +40,6 @@ app.use((req, res, next) => {
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-//Test
-/*app.use((req, res) => {
-  res.json({ message: 'Votre requête a bien été reçue!' });
-});*/
-
 //Lien vers les routes pour les posts
 const postRoutes = require('./routes/post');
 app.use('/api/posts', postRoutes);

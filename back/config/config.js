@@ -1,3 +1,6 @@
+/**Configuration de la base de données avec 
+utilisation de dotenv pr ne pas commit les infos sensibles**/
+
 require('dotenv').config();
 module.exports = {
   development: {

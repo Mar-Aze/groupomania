@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 const fs = require('fs');
+//on recupère grâce au token l'user ID pr savoir si l'user a les droits de supprétion/modification
 const { getUserIdFromToken } = require('../middleware/auth');
 
 //Route Post/Création d'un utilisateur
@@ -52,6 +53,7 @@ exports.login = (req, res) => {
 //Route Delete/Supprétion d'un utilisateur
 exports.deleteUser = (req, res) => {
   const authUserId = getUserIdFromToken(req);
+  //on récupère les posts appartenant à l'utilisateur pr gérer la suppressions des médias
   Post.findAll({ where: { userId: authUserId } }).then((post) => {
     post.forEach((p) => {
       if (p.imageUrl) {
@@ -66,6 +68,8 @@ exports.deleteUser = (req, res) => {
       }
     });
   });
+  //on supprime l'utilisateur et son média s'il y a
+  //les posts lui appartennant sont éliminés automatiquement grâce à la relation one to many entre les modeles post et user
   User.findOne({ where: { id: req.params.id } })
     .then((user) => {
       if (user.id !== authUserId) {
@@ -100,6 +104,7 @@ exports.modifyUser = (req, res) => {
         return;
       }
       let newUser = { ...req.body };
+      //gérer la modification du user en fonction de la présence d'une image ou pas
       if (req.file && u.imageUrl !== null) {
         const filename = u.imageUrl.split('/images/')[1];
         fs.unlink(`images/${filename}`, () => {
