@@ -113,7 +113,6 @@ export default class Api {
         'Content-Type': 'application/json',
         authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token')),
       },
-      //body: JSON.stringify({}),
     }).then(handleApiResponse);
   }
 
